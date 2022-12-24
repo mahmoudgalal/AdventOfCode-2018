@@ -471,8 +471,18 @@ class AdventOfCodeDay10 {
         }.map {
             it.position.second
         }
+        val maxX = (allX.maxOrNull()?:0)
+        val maxY = (allY.maxOrNull()?:0)
+        val display:StringBuilder = StringBuilder(" ".repeat(maxX)+"\n")
+        repeat(maxY){
+            display.append(" ".repeat(maxX)+"\n")
+        }
+        allX.forEachIndexed { index, i ->
+            display[i+ (maxX*allY[index])]='#'
+        }
         println(allX)
         println(allY)
+        println(display)
     }
     companion object{
         const val NO_OF_ITERATIONS = 15000
